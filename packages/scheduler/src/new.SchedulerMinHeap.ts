@@ -1,20 +1,14 @@
-type Heap = Array<INode>;
-type INode = {
-  id: number,
-  sortIndex: number
-};
-
-export function push(heap: Heap, node: INode): void {
+export function push(heap: Schedule.Heap, node: Schedule.INode): void {
   const index = heap.length;
   heap.push(node);
   siftUp(heap, node, index);
 };
 
-export function peek(heap: Heap): INode | null {
+export function peek(heap: Schedule.Heap): Schedule.INode | null {
   return heap.length === 0 ? null : heap[0];
 }
 
-export function pop(heap: Heap): INode | null {
+export function pop(heap: Schedule.Heap): Schedule.INode | null {
   if (heap.length === 0) {
     return null;
   }
@@ -30,7 +24,7 @@ export function pop(heap: Heap): INode | null {
   return first;
 }
 
-function siftUp(heap: Heap, node: INode, i: number): void {
+function siftUp(heap: Schedule.Heap, node: Schedule.INode, i: number): void {
   let index = i;
   while (index > 0) {
     const parentIndex = (index - 1) >>> 1;
@@ -45,7 +39,7 @@ function siftUp(heap: Heap, node: INode, i: number): void {
   }
 }
 
-function siftDown(heap: Heap, node: INode, i: number): void {
+function siftDown(heap: Schedule.Heap, node: Schedule.INode, i: number): void {
   let index = i;
   const length = heap.length;
   const halfLength = length >>> 1;
@@ -75,7 +69,7 @@ function siftDown(heap: Heap, node: INode, i: number): void {
   }
 }
 
-function compare(a: INode, b: INode) {
+function compare(a: Schedule.INode, b: Schedule.INode) {
   const diff = a.sortIndex - b.sortIndex;
   return diff !== 0 ? diff : a.id - b.id
 }

@@ -149,5 +149,11 @@
   },
   "resolutions": {
     "react-is": "npm:react-is"
-  }
+  },
+  "name": "react-study",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Can-Chen/react-study.git",
+  "author": "chencan <chencan@hortorgames.com>",
+  "license": "MIT"
 }

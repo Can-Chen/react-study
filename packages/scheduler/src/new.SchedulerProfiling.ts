@@ -1,4 +1,3 @@
-import type { PriorityLevel } from './new.SchedulerPriorities';
 import { enableProfiling } from './new.SchedulerFeatureFlags';
 
 let runIdCounter: number = 0;
@@ -22,7 +21,7 @@ const TaskYieldEvent = 6;
 const SchedulerSuspendEvent = 7;
 const SchedulerResumeEvent = 8;
 
-function logEvent(entries) {
+function logEvent(entries: any[]) {
   if (eventLog !== null) {
     const offset = eventLogIndex;
     eventLogIndex += entries.length;
@@ -59,11 +58,7 @@ export function stopLoggingProfilingEvents(): ArrayBuffer | null {
   return buffer;
 }
 
-interface ITask {
-  id: number;
-  priorityLevel: PriorityLevel;
-  [prop: string]: any;
-}
+type ITask = Schedule.INode
 
 export function markTaskStart(task: ITask, ms: number): void {
   if (enableProfiling) {
